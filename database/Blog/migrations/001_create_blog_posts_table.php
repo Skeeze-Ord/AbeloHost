@@ -8,15 +8,15 @@ class CreateBlogPostsTable
     {
         $pdo->query("
             CREATE TABLE IF NOT EXISTS `blog_posts` (
-                `created_at` DATETIME NOT NULL,
-                `updated_at` DATETIME NOT NULL,
+                `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                `updated_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
                 
                 `id` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                 `image` VARCHAR(255) NOT NULL,
                 `title` VARCHAR(255) NOT NULL,
                 `description` TEXT NOT NULL,
                 `content` TEXT NOT NULL,
-                `published_at` DATETIME NOT NULL,
+                `published_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
                 `views_count` INT UNSIGNED NOT NULL DEFAULT 0,
                 
                 INDEX (`published_at`),

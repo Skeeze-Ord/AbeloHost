@@ -8,8 +8,8 @@ class CreateBlogCategoriesTable
     {
         $pdo->query("
             CREATE TABLE IF NOT EXISTS `blog_categories` (
-                `created_at` DATETIME NOT NULL,
-                `updated_at` DATETIME NOT NULL,
+                `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                `updated_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
                 
                 `id` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                 `name` VARCHAR(255) NOT NULL,
