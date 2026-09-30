@@ -24,15 +24,40 @@ readonly class CategoryRepository
         $categories = [];
 
         foreach ($rows as $row) {
-            $categories[] = new Category(
-                id: (int)$row['id'],
-                name: $row['name'],
-                description: $row['description'],
-                createdAt: $row['created_at'],
-                updatedAt: $row['updated_at'],
-            );
+            $categories[] = $this->createCategory($row);
         }
 
         return $categories;
+    }
+
+    public function findById(int $categoryId): ?Category
+    {
+        $stmt = $this->pdo
+            ->prepare("
+                SELECT *
+                FROM `blog_categories`
+                WHERE `id` = :categoryId
+            ");
+
+        $stmt->execute(['categoryId' => $categoryId]);
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($row === false) {
+            return null;
+        }
+
+        return $this->createCategory($row);
+    }
+
+    private function createCategory(array $row): Category
+    {
+        return new Category(
+            id: (int)$row['id'],
+            name: $row['name'],
+            description: $row['description'],
+            createdAt: $row['created_at'],
+            updatedAt: $row['updated_at'],
+        );
     }
 }
