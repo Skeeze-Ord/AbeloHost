@@ -31,12 +31,11 @@ readonly class HomeController
             ];
         }
 
-        $this->smarty->assign('metaTitle', 'Home | AbeloHost');
+        $this->smarty->assign('metaTitle', 'Home');
         $this->smarty->assign('metaDescription', 'Home page');
-        $this->smarty->assign(
-            'pageTitle',
-            'Статьи о PHP, Docker, MySQL и разработке веб-приложений'
-        );
+        $this->smarty->assign('pageTitle', 'Статьи о PHP, Docker, MySQL и разработке веб-приложений');
+        $this->smarty->assign('pageDescription', '');
+
         $this->smarty->assign('result', $result);
 
         $this->smarty->display('blog/home.tpl');

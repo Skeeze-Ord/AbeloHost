@@ -1,8 +1,8 @@
 <section class="heading">
     <div class="container">
-        <h1 class="heading__title">{$title}</h1>
+        <h1 class="heading__title">{$pageTitle}</h1>
         <p class="heading__description">
-            {$pageTitle}
+            {$pageDescription}
         </p>
     </div>
 </section>
