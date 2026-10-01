@@ -1,7 +1,7 @@
 <?php namespace App\Blog\Controllers;
 
+use App\Blog\Exceptions\NotFoundException;
 use App\Blog\Repositories\PostRepository;
-use RuntimeException;
 use Smarty\Smarty;
 
 readonly class PostController
@@ -18,7 +18,7 @@ readonly class PostController
         $post = $this->postRepository->findById($postId);
 
         if (!$post) {
-            throw new RuntimeException('Post not found');
+            throw new NotFoundException('Post not found');
         }
 
         $this->postRepository->incrementViews($postId);

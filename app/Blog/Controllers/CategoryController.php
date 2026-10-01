@@ -1,8 +1,8 @@
 <?php namespace App\Blog\Controllers;
 
+use App\Blog\Exceptions\NotFoundException;
 use App\Blog\Repositories\CategoryRepository;
 use App\Blog\Repositories\PostRepository;
-use RuntimeException;
 use Smarty\Smarty;
 
 readonly class CategoryController
@@ -25,7 +25,7 @@ readonly class CategoryController
 
         // Пока без 404
         if (!$category) {
-            throw new RuntimeException('Category not found');
+            throw new NotFoundException('Category not found');
         }
 
         $posts = $this->postRepository->getByCategory($categoryId, $sortMethod, $currentPage, $perPage);

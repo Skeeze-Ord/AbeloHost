@@ -2,6 +2,7 @@
     <meta charset="UTF-8">
 
     <title>{$metaTitle} | AbeloHost</title>
+    <meta name="title" content="{$metaTitle}">
     <meta name="description" content="{$metaDescription|default:''}">
 
     <meta property="og:title" content="{$metaTitle} | AbeloHost">
