@@ -18,10 +18,6 @@ require __DIR__ . '/../config/database.php';
 
 $smarty = require __DIR__ . '/../config/smarty.php';
 
-$smarty->assign('metaTitle', 'Home | AbeloHost');
-$smarty->assign('metaDescription', 'Home page');
-$smarty->assign('pageTitle', 'Статьи о PHP, Docker, MySQL и разработке веб-приложений');
-
 $pdo = createDatabaseConnection();
 
 $categoryRepository = new CategoryRepository($pdo);

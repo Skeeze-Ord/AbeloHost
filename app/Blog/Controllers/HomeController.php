@@ -5,7 +5,7 @@ use App\Blog\Repositories\PostRepository;
 use Smarty\Exception;
 use Smarty\Smarty;
 
-class HomeController
+readonly class HomeController
 {
     public function __construct(
         private Smarty             $smarty,
@@ -31,7 +31,14 @@ class HomeController
             ];
         }
 
+        $this->smarty->assign('metaTitle', 'Home | AbeloHost');
+        $this->smarty->assign('metaDescription', 'Home page');
+        $this->smarty->assign(
+            'pageTitle',
+            'Статьи о PHP, Docker, MySQL и разработке веб-приложений'
+        );
         $this->smarty->assign('result', $result);
+
         $this->smarty->display('blog/home.tpl');
     }
 }
