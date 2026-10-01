@@ -2,8 +2,10 @@
 
 use App\Blog\Controllers\HomeController;
 use App\Blog\Controllers\CategoryController;
+use App\Blog\Controllers\PostController;
 use App\Blog\Repositories\CategoryRepository;
 use App\Blog\Repositories\PostRepository;
+use App\Blog\Services\ControllerFactory;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -15,6 +17,9 @@ require __DIR__ . '/../app/Blog/Repositories/PostRepository.php';
 
 require __DIR__ . '/../app/Blog/Controllers/HomeController.php';
 require __DIR__ . '/../app/Blog/Controllers/CategoryController.php';
+require __DIR__ . '/../app/Blog/Controllers/PostController.php';
+
+require __DIR__ . '/../app/Blog/Services/ControllerFactory.php';
 
 require __DIR__ . '/../config/database.php';
 
@@ -24,6 +29,12 @@ $pdo = createDatabaseConnection();
 
 $categoryRepository = new CategoryRepository($pdo);
 $postRepository = new PostRepository($pdo);
+
+$controllerFactory = new ControllerFactory(
+    $smarty,
+    $categoryRepository,
+    $postRepository
+);
 
 $routes = require __DIR__ . '/../routes/web.php';
 
@@ -40,28 +51,24 @@ foreach ($routes as $route => $handler) {
     if ($routePath === $path) {
         [$controllerClass, $action] = $handler;
 
-        $controller = new $controllerClass(
-            $smarty,
-            $categoryRepository,
-            $postRepository,
-        );
+        $controller = $controllerFactory->create($controllerClass);
 
         $controller->$action();
 
         exit;
     }
 
-    if ($routePath === '/categories/{id}') {
-        $pattern = '#^/categories/(\d+)$#';
+    if (str_contains($routePath, '{id}')) {
+        $pattern = '#^' . str_replace(
+                '{id}',
+                '(\d+)',
+                $routePath
+            ) . '$#';
 
         if (preg_match($pattern, $path, $matches)) {
             [$controllerClass, $action] = $handler;
 
-            $controller = new $controllerClass(
-                $smarty,
-                $categoryRepository,
-                $postRepository,
-            );
+            $controller = $controllerFactory->create($controllerClass);
 
             $controller->$action((int)$matches[1]);
 

@@ -42,7 +42,7 @@
                                 {$post->description}
                             </p>
                             <div class="post-card__meta">
-                                <span>{$post->publishedAt}</span>
+                                <span>{$post->publishedAt|date_format:"%d.%m.%Y"}</span>
                                 <span>👁 {$post->viewsCount}</span>
                             </div>
                         </div>

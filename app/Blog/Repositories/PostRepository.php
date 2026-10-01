@@ -141,6 +141,18 @@ readonly class PostRepository
         return $posts;
     }
 
+    public function incrementViews(int $postId): void
+    {
+        $stmt = $this->pdo
+            ->prepare("
+                UPDATE `blog_posts`
+                SET `views_count` = `views_count` + 1
+                WHERE `id` = :postId
+            ");
+
+        $stmt->execute(['postId' => $postId]);
+    }
+
     private function createPost(array $row): Post
     {
         return new Post(
