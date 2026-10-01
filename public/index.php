@@ -1,26 +1,11 @@
 <?php
 
-use App\Blog\Controllers\HomeController;
-use App\Blog\Controllers\CategoryController;
-use App\Blog\Controllers\PostController;
 use App\Blog\Repositories\CategoryRepository;
 use App\Blog\Repositories\PostRepository;
 use App\Blog\Services\ControllerFactory;
+use App\Blog\Exceptions\NotFoundException;
 
 require __DIR__ . '/../vendor/autoload.php';
-
-require __DIR__ . '/../app/Blog/Models/Category.php';
-require __DIR__ . '/../app/Blog/Models/Post.php';
-
-require __DIR__ . '/../app/Blog/Repositories/CategoryRepository.php';
-require __DIR__ . '/../app/Blog/Repositories/PostRepository.php';
-
-require __DIR__ . '/../app/Blog/Controllers/HomeController.php';
-require __DIR__ . '/../app/Blog/Controllers/CategoryController.php';
-require __DIR__ . '/../app/Blog/Controllers/PostController.php';
-
-require __DIR__ . '/../app/Blog/Services/ControllerFactory.php';
-
 require __DIR__ . '/../config/database.php';
 
 $smarty = require __DIR__ . '/../config/smarty.php';
@@ -53,7 +38,18 @@ foreach ($routes as $route => $handler) {
 
         $controller = $controllerFactory->create($controllerClass);
 
-        $controller->$action();
+        try {
+            $controller->$action();
+        } catch (NotFoundException $exception) {
+            http_response_code(404);
+
+            $smarty->assign('metaTitle', '404');
+            $smarty->assign('metaDescription', '404 - Страница не найдена');
+
+            $smarty->display('site/404.tpl');
+
+            exit;
+        }
 
         exit;
     }
@@ -70,9 +66,27 @@ foreach ($routes as $route => $handler) {
 
             $controller = $controllerFactory->create($controllerClass);
 
-            $controller->$action((int)$matches[1]);
+            try {
+                $controller->$action((int)$matches[1]);
+            } catch (NotFoundException $exception) {
+                http_response_code(404);
+
+                $smarty->assign('metaTitle', '404');
+                $smarty->assign('metaDescription', '404 - Страница не найдена');
+
+                $smarty->display('site/404.tpl');
+
+                exit;
+            }
 
             exit;
         }
     }
 }
+
+http_response_code(404);
+
+$smarty->assign('metaTitle', '404');
+$smarty->assign('metaDescription', '404 - Страница не найдена');
+
+$smarty->display('site/404.tpl');
