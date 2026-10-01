@@ -23,7 +23,6 @@ readonly class CategoryController
 
         $category = $this->categoryRepository->findById($categoryId);
 
-        // Пока без 404
         if (!$category) {
             throw new NotFoundException('Category not found');
         }

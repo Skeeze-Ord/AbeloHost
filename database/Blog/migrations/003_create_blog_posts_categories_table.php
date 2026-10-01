@@ -11,6 +11,7 @@ class CreateBlogPostsCategoriesTable
                 `post_id` INT UNSIGNED NOT NULL,
                 `category_id` INT UNSIGNED NOT NULL,
                 PRIMARY KEY (`post_id`, `category_id`),
+                INDEX (`category_id`),
                 
                 FOREIGN KEY (post_id)
                     REFERENCES blog_posts(id)

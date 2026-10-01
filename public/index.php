@@ -4,6 +4,7 @@ use App\Blog\Repositories\CategoryRepository;
 use App\Blog\Repositories\PostRepository;
 use App\Blog\Services\ControllerFactory;
 use App\Blog\Exceptions\NotFoundException;
+use Smarty\Smarty;
 
 require __DIR__ . '/../vendor/autoload.php';
 require __DIR__ . '/../config/database.php';
@@ -41,14 +42,7 @@ foreach ($routes as $route => $handler) {
         try {
             $controller->$action();
         } catch (NotFoundException $exception) {
-            http_response_code(404);
-
-            $smarty->assign('metaTitle', '404');
-            $smarty->assign('metaDescription', '404 - Страница не найдена');
-
-            $smarty->display('site/404.tpl');
-
-            exit;
+            renderNotFound($smarty);
         }
 
         exit;
@@ -69,14 +63,7 @@ foreach ($routes as $route => $handler) {
             try {
                 $controller->$action((int)$matches[1]);
             } catch (NotFoundException $exception) {
-                http_response_code(404);
-
-                $smarty->assign('metaTitle', '404');
-                $smarty->assign('metaDescription', '404 - Страница не найдена');
-
-                $smarty->display('site/404.tpl');
-
-                exit;
+                renderNotFound($smarty);
             }
 
             exit;
@@ -90,3 +77,15 @@ $smarty->assign('metaTitle', '404');
 $smarty->assign('metaDescription', '404 - Страница не найдена');
 
 $smarty->display('site/404.tpl');
+
+function renderNotFound(Smarty $smarty): never
+{
+    http_response_code(404);
+
+    $smarty->assign('metaTitle', '404');
+    $smarty->assign('metaDescription', '404 - Страница не найдена');
+
+    $smarty->display('site/404.tpl');
+
+    exit;
+}

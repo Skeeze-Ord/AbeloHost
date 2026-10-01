@@ -1,13 +1,15 @@
 <head>
     <meta charset="UTF-8">
 
-    <title>{$metaTitle} | AbeloHost</title>
-    <meta name="title" content="{$metaTitle}">
-    <meta name="description" content="{$metaDescription|default:''}">
+    <title>{$metaTitle|escape} | AbeloHost</title>
+    <meta name="description" content="{$metaDescription|default:''|escape}">
 
-    <meta property="og:title" content="{$metaTitle} | AbeloHost">
-    <meta property="og:description" content="{$metaDescription|default:''}">
+    <meta property="og:title" content="{$metaTitle|escape} | AbeloHost">
+    <meta property="og:description" content="{$metaDescription|default:''|escape}">
     <meta property="og:type" content="website">
+    {if $robots|default:''}
+        <meta name="robots" content="{$robots}">
+    {/if}
 
     <link rel="stylesheet" href="/assets/css/main.css">
 </head>

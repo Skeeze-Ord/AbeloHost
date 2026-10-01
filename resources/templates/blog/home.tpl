@@ -13,8 +13,8 @@
             <section class="category-section">
                 <div class="category-section__header">
                     <div>
-                        <h2 class="category-section__title">{$categoryData.category->name}</h2>
-                        <p class="category-section__description">{$categoryData.category->description}</p>
+                        <h2 class="category-section__title">{$categoryData.category->name|escape}</h2>
+                        <p class="category-section__description">{$categoryData.category->description|escape}</p>
                     </div>
                     <a href="/categories/{$categoryData.category->id}" class="category-section__link">Все статьи →</a>
                 </div>
@@ -23,14 +23,14 @@
                         <article class="post-card">
                             <a href="/posts/{$post->id}">
                                 <img src="/images/{$post->image}"
-                                     alt="{$post->title}"
+                                     alt="{$post->title|escape}"
                                      class="post-card__image">
                             </a>
                             <div class="post-card__body">
                                 <h3 class="post-card__title">
-                                    <a href="/posts/{$post->id}">{$post->title}</a>
+                                    <a href="/posts/{$post->id}">{$post->title|escape}</a>
                                 </h3>
-                                <p class="post-card__description">{$post->description}</p>
+                                <p class="post-card__description">{$post->description|escape}</p>
                                 <div class="post-card__meta">
                                     <span>{$post->publishedAt|date_format:"%d.%m.%Y"}</span>
                                     <span>👁 {$post->viewsCount}</span>

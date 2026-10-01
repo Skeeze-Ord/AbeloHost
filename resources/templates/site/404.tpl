@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
-{include file="site/head.tpl"}
-<meta name="robots" content="noindex, nofollow">
+{include file="site/head.tpl" robots='noindex, nofollow'}
 <body>
 
 {include file="site/header.tpl"}

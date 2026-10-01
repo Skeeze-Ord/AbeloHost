@@ -13,7 +13,7 @@
             <div class="post-main-card">
                 <div class="post-main-card__image">
                     <img src="/images/{$post->image}"
-                         alt="{$post->title}">
+                         alt="{$post->title|escape}">
                 </div>
                 <div class="post-main-card__content">
                     <div class="post-main-card__text">
@@ -35,14 +35,14 @@
                             <article class="post-card">
                                 <a href="/posts/{$similarPost->id}">
                                     <img src="/images/{$similarPost->image}"
-                                         alt="{$similarPost->title}"
+                                         alt="{$similarPost->title|escape}"
                                          class="post-card__image">
                                 </a>
                                 <div class="post-card__body">
                                     <h3 class="post-card__title">
-                                        <a href="/posts/{$similarPost->id}">{$similarPost->title}</a>
+                                        <a href="/posts/{$similarPost->id}">{$similarPost->title|escape}</a>
                                     </h3>
-                                    <p class="post-card__description">{$similarPost->description}</p>
+                                    <p class="post-card__description">{$similarPost->description|escape}</p>
                                     <div class="post-card__meta">
                                         <span>{$similarPost->publishedAt|date_format:"%d.%m.%Y"}</span>
                                         <span>👁 {$similarPost->viewsCount}</span>

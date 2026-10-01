@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
-    {include file="site/head.tpl"}
+{include file="site/head.tpl"}
 <body>
 
 {include file="site/header.tpl"}
@@ -29,17 +29,17 @@
                     <article class="post-card">
                         <a href="/posts/{$post->id}">
                             <img src="/images/{$post->image}"
-                                 alt="{$post->title}"
+                                 alt="{$post->title|escape}"
                                  class="post-card__image">
                         </a>
                         <div class="post-card__body">
                             <h2 class="post-card__title">
                                 <a href="/posts/{$post->id}">
-                                    {$post->title}
+                                    {$post->title|escape}
                                 </a>
                             </h2>
                             <p class="post-card__description">
-                                {$post->description}
+                                {$post->description|escape}
                             </p>
                             <div class="post-card__meta">
                                 <span>{$post->publishedAt|date_format:"%d.%m.%Y"}</span>

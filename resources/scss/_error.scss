@@ -31,12 +31,9 @@
   align-items: center;
   justify-content: center;
   padding: 12px 20px;
-  color: variables.$color-white;
-  background: variables.$color-primary;
-  border-radius: 8px;
   font-weight: 600;
 }
 
 .error-page__link:hover {
-  background: variables.$color-primary-hover;
+  text-decoration: underline;
 }

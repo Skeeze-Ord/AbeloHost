@@ -2,7 +2,6 @@
 
 use App\Blog\Repositories\CategoryRepository;
 use App\Blog\Repositories\PostRepository;
-use Smarty\Exception;
 use Smarty\Smarty;
 
 readonly class HomeController
@@ -15,9 +14,6 @@ readonly class HomeController
     {
     }
 
-    /**
-     * @throws Exception
-     */
     public function index(): void
     {
         $categories = $this->categoryRepository->getWithPosts();
