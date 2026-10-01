@@ -1,0 +1,26 @@
+@use 'variables';
+
+.header {
+  padding: 24px 0;
+  background: variables.$color-white;
+  border-bottom: 1px solid variables.$color-border;
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__logo {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.header__link {
+  color: variables.$color-muted;
+}
+
+.header__link:hover {
+  color: variables.$color-text;
+}

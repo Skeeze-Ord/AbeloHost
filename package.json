@@ -1,0 +1,16 @@
+{
+  "name": "abelohost",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --no-source-map resources/scss/main.scss public/assets/css/main.css",
+    "sass:watch": "sass --watch --no-source-map resources/scss/main.scss:public/assets/css/main.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "sass": "^1.105.1"
+  }
+}

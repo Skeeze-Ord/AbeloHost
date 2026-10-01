@@ -1,0 +1,32 @@
+@use 'variables';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 32px;
+}
+
+.pagination a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  padding: 0 12px;
+  color: variables.$color-muted;
+  background: variables.$color-white;
+  border: 1px solid variables.$color-border;
+  border-radius: 8px;
+}
+
+.pagination a:hover {
+  color: variables.$color-primary;
+  border-color: variables.$color-primary;
+}
+
+.pagination a.active {
+  color: variables.$color-white;
+  background: variables.$color-primary;
+  border-color: variables.$color-primary;
+}

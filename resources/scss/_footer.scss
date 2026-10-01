@@ -1,0 +1,9 @@
+@use 'variables';
+
+.footer {
+  margin-top: 60px;
+  padding: 30px 0;
+  color: variables.$color-muted;
+  background: variables.$color-white;
+  border-top: 1px solid variables.$color-border;
+}
