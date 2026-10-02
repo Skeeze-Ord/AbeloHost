@@ -8,7 +8,7 @@ class CreateBlogPostsSeeder
     {
         $posts = [
             [
-                'image' => 'php-8-3.jpg',
+                'image' => 'php-8-3.png',
                 'title' => 'Что нового в PHP 8.3',
                 'description' => 'Краткий обзор основных изменений и возможностей PHP 8.3.',
                 'content' => 'PHP 8.3 добавляет несколько новых возможностей языка и улучшений производительности. В этой статье рассмотрим наиболее заметные изменения.',
@@ -17,7 +17,7 @@ class CreateBlogPostsSeeder
                 'categories' => [1],
             ],
             [
-                'image' => 'docker-php.jpg',
+                'image' => 'docker-php.png',
                 'title' => 'Запуск PHP-проекта в Docker',
                 'description' => 'Разбираем базовую структуру Docker-окружения для PHP-проекта.',
                 'content' => 'Docker позволяет изолировать PHP, веб-сервер и базу данных в отдельных контейнерах. Рассмотрим базовую структуру такого окружения.',
@@ -26,7 +26,7 @@ class CreateBlogPostsSeeder
                 'categories' => [1, 2],
             ],
             [
-                'image' => 'mysql-indexes.jpg',
+                'image' => 'mysql-indexes.png',
                 'title' => 'Индексы в MySQL',
                 'description' => 'Для чего нужны индексы и как они влияют на выполнение запросов.',
                 'content' => 'Индексы позволяют MySQL быстрее находить необходимые строки. При этом неправильное использование индексов может увеличить стоимость операций записи.',
@@ -35,7 +35,7 @@ class CreateBlogPostsSeeder
                 'categories' => [3],
             ],
             [
-                'image' => 'pdo.jpg',
+                'image' => 'pdo.png',
                 'title' => 'Работа с MySQL через PDO',
                 'description' => 'Основы подключения PHP-приложения к MySQL с использованием PDO.',
                 'content' => 'PDO предоставляет единый интерфейс для работы с различными базами данных. В статье рассмотрим подключение и подготовленные запросы.',
@@ -44,7 +44,7 @@ class CreateBlogPostsSeeder
                 'categories' => [1, 3],
             ],
             [
-                'image' => 'docker-compose.jpg',
+                'image' => 'docker-compose.png',
                 'title' => 'Docker Compose для PHP и MySQL',
                 'description' => 'Как связать PHP-приложение и MySQL с помощью Docker Compose.',
                 'content' => 'Docker Compose позволяет описать несколько связанных контейнеров в одном YAML-файле. Разберём взаимодействие PHP-приложения и MySQL.',
@@ -53,7 +53,7 @@ class CreateBlogPostsSeeder
                 'categories' => [2, 3],
             ],
             [
-                'image' => 'php-docker.jpg',
+                'image' => 'php-docker.png',
                 'title' => 'PHP-приложение в контейнере',
                 'description' => 'Практический пример запуска PHP-приложения внутри Docker-контейнера.',
                 'content' => 'Контейнеризация позволяет зафиксировать окружение приложения и упростить его запуск на разных машинах.',

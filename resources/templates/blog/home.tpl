@@ -22,9 +22,10 @@
                     {foreach $categoryData.posts as $post}
                         <article class="post-card">
                             <a href="/posts/{$post->id}">
-                                <img src="/images/{$post->image}"
+                                <img src="/assets/images/posts/{$post->image}"
                                      alt="{$post->title|escape}"
-                                     class="post-card__image">
+                                     class="post-card__image"
+                                     loading="lazy">
                             </a>
                             <div class="post-card__body">
                                 <h3 class="post-card__title">

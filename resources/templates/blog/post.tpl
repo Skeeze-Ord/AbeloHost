@@ -12,8 +12,9 @@
         <article class="post-page">
             <div class="post-main-card">
                 <div class="post-main-card__image">
-                    <img src="/images/{$post->image}"
-                         alt="{$post->title|escape}">
+                    <img src="/assets/images/posts/{$post->image}"
+                         alt="{$post->title|escape}"
+                         loading="lazy">
                 </div>
                 <div class="post-main-card__content">
                     <div class="post-main-card__text">
@@ -34,9 +35,10 @@
                         {foreach $similarPosts as $similarPost}
                             <article class="post-card">
                                 <a href="/posts/{$similarPost->id}">
-                                    <img src="/images/{$similarPost->image}"
+                                    <img src="/assets/images/posts/{$similarPost->image}"
                                          alt="{$similarPost->title|escape}"
-                                         class="post-card__image">
+                                         class="post-card__image"
+                                         loading="lazy">
                                 </a>
                                 <div class="post-card__body">
                                     <h3 class="post-card__title">
