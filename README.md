@@ -112,6 +112,7 @@ cd AbeloHost
 ```bash
 cp .env.example .env
 ```
+При необходимости изменить параметры окружения
 
 Запустить Docker-контейнеры:
 ```bash
