@@ -1,7 +1,7 @@
 .posts {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 24px;
 }
 
 .post-card {
@@ -63,5 +63,17 @@
 @media (max-width: 600px) {
   .posts {
     grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .post-card {
+    width: 100%;
+  }
+
+  .post-card__image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
   }
 }
