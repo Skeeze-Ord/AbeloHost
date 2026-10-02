@@ -71,12 +71,7 @@ foreach ($routes as $route => $handler) {
     }
 }
 
-http_response_code(404);
-
-$smarty->assign('metaTitle', '404');
-$smarty->assign('metaDescription', '404 - Страница не найдена');
-
-$smarty->display('site/404.tpl');
+renderNotFound($smarty);
 
 function renderNotFound(Smarty $smarty): never
 {
