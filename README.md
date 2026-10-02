@@ -108,6 +108,11 @@ git clone https://github.com/Skeeze-Ord/AbeloHost
 cd AbeloHost
 ```
 
+Создать файл `.env` в корне проекта на основе `.env.example`:
+```bash
+cp .env.example .env
+```
+
 Запустить Docker-контейнеры:
 ```bash
 docker compose up -d --build
